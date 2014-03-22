@@ -1,0 +1,10 @@
+- @title = 'Edit ' + @dish.name
+
+.twelve.columns
+  %h1 Edit new dish
+
+.twelve.columns
+  = form_for @dish, url: { action: :update, id: @dish.id }, html: { multipart: true } do |f|
+    = render partial: 'form', locals: { f: f }
+
+    .large.info.btn= submit_tag 'Update the dish'

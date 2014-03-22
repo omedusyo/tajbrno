@@ -1,0 +1,48 @@
+!!!
+%html
+  %head
+    %title= "Tajbrno | #{title}"
+    = stylesheet_link_tag    :application, media: 'all'
+    = javascript_include_tag :modernizr
+    = javascript_include_tag :application
+    = csrf_meta_tags
+  %body
+    #wrap
+      #header
+        .row
+          .twelve.columns
+            %h1 Tajbrno
+
+      #nav
+        .navbar
+          .row
+            .two.columns.logo= link_to 'Tajbrno', controller: :articles, action: :index
+            %ul.seven.columns
+              - nav_items.each do |item, url|
+                - if title == item
+                  %li.active= link_to item, url
+                - else
+                  %li= link_to item, url
+
+              - if logged_in?
+                %li.user
+                  = link_to '#' do
+                    %strong= current_user.first_name
+
+                  .dropdown
+                    %ul
+                      %li= link_to 'Options', '#'
+                      %li= link_to 'Logout', controller: :access, action: :logout
+
+      #slideshow
+      #content
+        .row= yield
+      #push
+
+    #footer
+      %div
+        %p &copy; Tajbrno 2013. No rights reserved.
+        %p
+          = link_to 'Login', controller: :access, action: :login
+          %span= '|'
+          = link_to 'Sign up', controller: :users, action: :signup

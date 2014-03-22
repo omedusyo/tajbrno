@@ -1,0 +1,22 @@
+- @title = @category.name
+
+.twelve.columns
+  %h1= @category.name
+
+- if logged_in?
+  .twelve.columns
+    .medium.info.btn
+      = link_to 'Edit', action: :edit, id: @category.id
+    .medium.info.btn
+      = link_to 'Add a dish', action: :add_dish, id: @category.id
+    .medium.info.btn
+      = link_to 'Delete', delete_category_path(@category.id), method: :delete
+
+.twelve.columns
+  %ul
+    - @category.dishes.each do |dish|
+      %li
+        %h2= link_to dish.name, controller: :dishes, action: :show, id: dish.id
+        %p= dish.description
+        %p= "#{dish.price} $"
+        .image.photo= image_tag dish.image_url.to_s

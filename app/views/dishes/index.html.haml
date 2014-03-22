@@ -1,0 +1,20 @@
+- @title = 'Dishes'
+
+.twelve.colums
+  %h1 Dishes
+.twelve.columns
+  .medium.info.btn.rounded
+    = link_to 'Create new dish', action: :new
+
+
+- if flash[:notice].present?
+  .four.columns
+    .success.label= flash[:notice]
+
+%ul.twelve.columns
+  - @dishes.each do |dish|
+    %li
+      %h2= link_to dish.name, action: :show, id: dish.id
+      %p= dish.description
+      %p= "#{dish.price} $"
+      .image.photo= image_tag dish.image_url(:thumb).to_s

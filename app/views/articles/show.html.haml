@@ -1,0 +1,17 @@
+- @title = @article.title
+
+.twelve.columns
+  %h1 Displaying a particular article...
+
+- if logged_in?
+  .twelve.columns
+    .medium.info.btn
+      = link_to 'Edit', edit_article_path(@article.id)
+    .medium.info.btn
+      = link_to 'Delete', delete_article_path(@article.id), method: :delete
+
+.twelve.columns
+  .article
+    %h2= @article.title
+    %p=  @article.content
+    %span.warning.label= @article.created_at.strftime 'Article was created on %m/%d/%Y'

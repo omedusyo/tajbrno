@@ -1,0 +1,10 @@
+- @title = 'Create new dish'
+
+.twelve.columns
+  %h1 Create new dish
+
+.twelve.columns
+  = form_for @dish, url: { action: :create }, html: { multipart: true } do |f|
+    = render partial: 'form', locals: { f: f }
+
+    .large.info.btn= submit_tag 'Create new dish'

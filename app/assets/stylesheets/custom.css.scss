@@ -1,0 +1,100 @@
+// COLORS
+$light-gray: #eeeeee;
+$gray: darken($light-gray, 20%);
+$dark-gray: #1B1B1B;
+$black: #111;
+$white: white;
+$green: #4df875;
+$orange: #d04526;
+$blue: darken(invert($orange), 10%);
+
+$bg-color: $light-gray;
+$header-text-color: lighten($black, 15%);
+$nav-bg-color: lighten($black, 6%);
+$logo-color: $green;
+
+// STYLES
+body { background: $bg-color; }
+html, body { height: 100%; }
+
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+}
+
+#header {
+  padding: 60px;
+  color: red;
+  background: lighten($bg-color, 5%);
+
+  h1 {
+    color: $header-text-color;
+    letter-spacing: -1px;
+    font-size: 60px;
+    font-weight: bold;
+  }
+}
+
+#nav .navbar {
+  margin-bottom: 0px;
+  background: $nav-bg-color;
+
+  ul li {
+    a {
+      color: $gray;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  .logo a {
+    padding-left: 20px;
+    font-size: 26px;
+    font-weight: 300;
+    color: $logo-color;
+    &:hover {
+      color: $white;
+    }
+  }
+
+  .user {
+
+  }
+
+  .active {
+    background: $black;
+
+    a {
+      color: $white;
+    }
+  }
+}
+
+#slideshow {
+
+}
+
+#content {
+  min-height: 940px/golden() - 100px;
+}
+
+#push {
+  height: 100px;
+}
+
+#footer {
+  height: 210px;
+  background: darken($bg-color, 5%);
+
+  p {
+    padding-top: 35px;
+    text-align: center;
+
+    span {
+      color: $gray;
+    }
+  }
+}
+

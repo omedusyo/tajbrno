@@ -1,0 +1,10 @@
+- @title = "#{@image.alt} {editing}"
+
+.twelve.columns
+  %h1 Edit gallery image
+
+.twelve.columns
+  = form_for @image, url: { action: :update, id: @image.id }, html: { multipart: true } do |f|
+    = render partial: 'form', locals: { f: f }
+
+    .large.info.btn= submit_tag 'Update image'

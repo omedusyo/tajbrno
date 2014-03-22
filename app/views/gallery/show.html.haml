@@ -1,0 +1,14 @@
+- @title = @image.alt
+
+.twele.columns
+  %h1 Displaying a particular gallery imgage...
+
+- if logged_in?
+  .twelve.columns
+    .medium.info.btn
+      = link_to 'Edit', action: :edit, id: @image.id
+    .medium.info.btn
+      = link_to 'Remove', delete_gallery_image_url(@image.id), method: :delete
+
+.twelve.columns
+  .image= image_tag @image.image_url.to_s

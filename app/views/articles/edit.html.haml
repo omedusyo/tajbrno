@@ -1,0 +1,8 @@
+- @title = "Editing '#{@article.title}'"
+
+.twelve.columns
+  %h1= raw "Update '#{link_to(@article.title, show_article_url(@article.id))}' article"
+
+.twelve.columns
+  = form_for @article, url: { action: :update, id: @article.id } do |f|
+    - render partial: 'form', locals: { f: f }

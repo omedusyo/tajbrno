@@ -1,0 +1,8 @@
+.field= f.text_field :alt, placeholder: 'Alternative text', class: 'input'
+
+.field.img_uploader
+  = f.file_field :image
+  .medium.info.btn
+    %button(onclick="return false;") Upload image
+  %span
+

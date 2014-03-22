@@ -1,0 +1,14 @@
+- @title = 'New article'
+
+.twelve.columns
+  %h1 Publish new article
+
+- if flash[:create_article_alerts].present?
+  .twelve.columns
+    - flash[:create_article_alerts].each do |alert|
+      .danger.alert= alert
+
+.twelve.columns
+  = form_for @article, url: { action: :create } do |f|
+    = render partial: 'form', locals: { f: f }
+

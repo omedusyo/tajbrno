@@ -1,0 +1,15 @@
+- @title = 'Gallery'
+
+.twelve.columns
+  %h1 Gallery
+
+- if logged_in?
+  .twelve.columns
+    .medium.info.btn.rounded
+      = link_to 'Add new image', action: :new
+
+.twelve.columns
+  %ul.two_up.tiles#images
+    - @images.each do |image|
+      %li.image.photo
+        = link_to image_tag(image.image_url(:thumb).to_s, alt: image.alt), action: :show, id: image.id

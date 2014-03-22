@@ -1,0 +1,21 @@
+- @title = 'Menu'
+
+.twelve.columns
+  %h1= 'Menu'
+
+- if logged_in?
+  .twelve.columns
+    .medium.info.btn.rounded
+      = link_to 'Create new category', action: :new
+
+    .medium.info.btn.rounded
+      = link_to 'Display all dishes', controller: :dishes, action: :index
+
+- if flash[:notice].present?
+  .four.columns
+    .success.label= flash[:notice]
+
+%ul.twelve.columns
+  - @categories.each do |category|
+    %li
+      %h2= link_to category.name, action: :show_dishes , id: category.id

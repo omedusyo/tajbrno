@@ -1,0 +1,12 @@
+- @title = 'Edit ' + @category.name
+
+.twelve.columns
+  %h1
+    = "Edit"
+    = link_to @category.name, action: :show_dishes, id: @category.id
+
+.twelve.columns
+  = form_for @category, url: { action: :update, id: @category.id } do |f|
+    = render partial: 'form', locals: { f: f }
+
+    .large.info.btn= submit_tag 'Update the menu category'

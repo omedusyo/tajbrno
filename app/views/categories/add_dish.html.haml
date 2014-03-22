@@ -1,0 +1,17 @@
+- @title = 'Adding a dish'
+
+.twelve.columns
+  %h1
+    Adding a dish to
+    = link_to @category.name, action: :show_dishes, id: @category.id
+
+.twelve.columns
+  = form_for @category, url: { action: :update_dishes, id: @category.id } do |f|
+    .field
+      .picker
+        %select(name="dish")
+          %option(value="#" disabled) Available dishes...
+          - @dishes.each do |dish|
+            %option{value: dish.id}= dish.name
+
+    .large.info.btn= submit_tag 'Add a dish'

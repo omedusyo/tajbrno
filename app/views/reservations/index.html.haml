@@ -1,0 +1,21 @@
+- @title = 'Reservations'
+
+.twelve.columns
+  %h1 Reservations
+
+%ul.twelve.columns
+  - @reservations.each do |reservation|
+    %li
+      %table
+        %tr
+          %td
+            %strong Reservation date:
+          %td= reservation.reservation_date
+        %tr
+          %td
+            %strong Telephone number:
+          %td= reservation.telephone_number
+        %tr
+          %td
+            %strong Number of people:
+          %td= reservation.number_of_people

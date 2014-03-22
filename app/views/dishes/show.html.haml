@@ -1,0 +1,18 @@
+- @title = @dish.name
+
+.twelve.columns
+  %h1 Displaying a particular dish...
+
+
+- if logged_in?
+  .twelve.columns
+    .medium.info.btn
+      = link_to 'Edit', action: :edit, id: @dish.id
+    .medium.info.btn
+      = link_to 'Delete', delete_dish_path(@dish.id), method: :delete
+
+.twelve.columns
+  %h1= @dish.name
+  %p= @dish.description
+  %p= "#{@dish.price} $"
+  .image.photo= image_tag @dish.image_url.to_s

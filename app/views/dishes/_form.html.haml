@@ -1,0 +1,10 @@
+.field= f.text_field :name, placeholder: 'Name', class: 'input'
+.field= f.text_field :description, placeholder: 'Description', class: 'input'
+.field= f.text_field :price, placeholder: 'Price in $', class: 'input'
+
+.field.img_uploader
+  = f.file_field :image
+  .medium.info.btn
+    %button(onclick="return false;") Upload image
+  %span
+
