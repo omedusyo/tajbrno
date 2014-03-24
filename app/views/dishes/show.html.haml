@@ -1,8 +1,9 @@
 - @title = @dish.name
 
 .twelve.columns
-  %h1 Displaying a particular dish...
-
+  %h1
+    = 'Displaying a particular'
+    = link_to 'dish...', action: :index
 
 - if logged_in?
   .twelve.columns
@@ -12,7 +13,10 @@
       = link_to 'Delete', delete_dish_path(@dish.id), method: :delete
 
 .twelve.columns
-  %h1= @dish.name
-  %p= @dish.description
-  %p= "#{@dish.price} $"
-  .image.photo= image_tag @dish.image_url.to_s
+  %ul.two_up.tiles
+    %li
+      %h2= @dish.name
+      %p= @dish.description
+      %h3.price= "#{@dish.price} $"
+    %li
+      .image.photo= image_tag @dish.image_url(:thumb).to_s

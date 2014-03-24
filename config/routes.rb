@@ -31,6 +31,10 @@ Tajbrno::Application.routes.draw do
   patch  '/menu/categories',              to: 'categories#update'
   delete '/menu/categories/:id',          to: 'categories#destroy', as: :delete_category
 
+  delete '/menu/categories/:category_id/remove/:dish_id',
+         to: 'categories#destroy_dish_assoc',
+         as: :delete_dish_assoc
+
   get    '/menu/dishes',               to: 'dishes#index'
   get    '/menu/dishes/new',           to: 'dishes#new'
   post   '/menu/dishes',               to: 'dishes#create'

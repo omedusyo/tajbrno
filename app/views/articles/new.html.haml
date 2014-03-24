@@ -3,10 +3,10 @@
 .twelve.columns
   %h1 Publish new article
 
-- if flash[:create_article_alerts].present?
+- if flash[:errors].present?
   .twelve.columns
-    - flash[:create_article_alerts].each do |alert|
-      .danger.alert= alert
+    - flash[:errors].each do |error|
+      .danger.alert= error
 
 .twelve.columns
   = form_for @article, url: { action: :create } do |f|

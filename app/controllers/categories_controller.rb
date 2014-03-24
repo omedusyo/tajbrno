@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :confirm_logged_in,
-                only: USERS_ACTIONS
+                only: USERS_ACTIONS + [ :add_dish, :update_dishes, :destroy_dish_assoc ]
 
   def index
     @categories = MenuCategory.order 'name ASC'
@@ -18,9 +18,9 @@ class CategoriesController < ApplicationController
     @category = MenuCategory.new category_params.merge( user_id: current_user.id )
     if @category.save
       flash[:notice] = 'Category created successfully'
-      redirect_to action: :index
+      redirect_to action: :show_dishes, id: @category.id
     else
-      flash[:alerts] = @category.errors.full_messages
+      flash[:errors] = @category.errors.full_messages
       render 'new'
     end
   end
@@ -28,12 +28,19 @@ class CategoriesController < ApplicationController
   def add_dish
     @category = MenuCategory.find params[:id]
     @dishes = Dish.all
+    @allowed_dishes = []
+    @dishes.each do |dish|
+      if not @category.dishes.include? dish
+        @allowed_dishes << dish
+      end
+    end
   end
 
   def update_dishes
     @category = MenuCategory.find params[:id]
     @dish = Dish.find params[:dish]
     @category.dishes << @dish
+    redirect_to action: :add_dish, id: @category.id
   end
 
   def edit
@@ -52,6 +59,20 @@ class CategoriesController < ApplicationController
   def destroy
     MenuCategory.find(params[:id]).destroy
     redirect_to action: :index
+  end
+
+  def destroy_dish_assoc
+    dish = Dish.find params[:dish_id]
+    category = MenuCategory.find params[:category_id]
+
+    category.dishes.delete(dish)
+    if category.save
+      flash[:notice] = 'Dish successfully removed from category'
+    else
+      flash[:errors] = category.errors.full_messages
+    end
+
+    redirect_to action: :show_dishes, id: category.id
   end
 
 private

@@ -11,7 +11,7 @@
       .picker
         %select(name="dish")
           %option(value="#" disabled) Available dishes...
-          - @dishes.each do |dish|
+          - @allowed_dishes.each do |dish|
             %option{value: dish.id}= dish.name
 
     .large.info.btn= submit_tag 'Add a dish'

@@ -17,6 +17,7 @@ gem "modular-scale", "~> 1.0.6"
 gem "rmagick", "~> 2.13.2"
 gem "carrierwave", "~> 0.10.0"
 
+gem 'auto_strip_attributes', '~> 2.0.4'
 gem 'font-awesome-rails', '~> 4.0.3.1'
 
 group :development do

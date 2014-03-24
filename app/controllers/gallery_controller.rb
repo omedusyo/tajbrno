@@ -20,7 +20,7 @@ class GalleryController < ApplicationController
       flash[:notice] = 'Gallery image added successfully'
       redirect_to action: :index
     else
-      flash[:create_gallery_image_alerts] = @image.errors.full_messages
+      flash[:errors] = @image.errors.full_messages
       render 'new'
     end
   end

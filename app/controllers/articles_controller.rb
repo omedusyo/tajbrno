@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
       flash[:notice] = 'Article created successfully'
       redirect_to action: :index
     else
-      flash[:create_article_alerts] = @article.errors.full_messages
+      flash[:errors] = @article.errors.full_messages
       render 'new'
     end
   end
@@ -34,6 +34,7 @@ class ArticlesController < ApplicationController
     if @article.update_attributes article_params
       redirect_to action: :show, id: @article.id
     else
+      flash[:errors] = @article.errors.full_messages
       render 'edit'
     end
   end

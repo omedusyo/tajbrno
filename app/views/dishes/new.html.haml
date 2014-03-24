@@ -1,7 +1,9 @@
 - @title = 'Create new dish'
 
 .twelve.columns
-  %h1 Create new dish
+  %h1
+    = 'Create new '
+    = link_to 'dish', action: :index
 
 .twelve.columns
   = form_for @dish, url: { action: :create }, html: { multipart: true } do |f|

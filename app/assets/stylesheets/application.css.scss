@@ -2,11 +2,12 @@
 @import "gumby/gumby";
 
 @import "font-awesome";
-@import "jquery.datetimepicker";
-@import "pretty_uploader";
+@import "plugins/jquery.datetimepicker";
+@import "plugins/jquery.prettyuploader";
 
 @import "custom";
 
-@import "articles";
-@import "access";
-@import "gallery";
+@import "controllers/articles";
+@import "controllers/access";
+@import "controllers/gallery";
+@import "controllers/dishes";

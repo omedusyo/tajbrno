@@ -1,6 +1,6 @@
 class DishesController < ApplicationController
   before_action :confirm_logged_in,
-                only: USERS_ACTIONS
+                only: USERS_ACTIONS + [ :index, :show ]
 
   def index
     @dishes = Dish.order 'name ASC'
@@ -16,7 +16,7 @@ class DishesController < ApplicationController
       flash[:notice] = 'Dish created successfully'
       redirect_to action: :index
     else
-      flash[:create_dish_alerts] = @dish.errors.full_messages
+      flash[:errors] = @dish.errors.full_messages
       render 'new'
     end
   end

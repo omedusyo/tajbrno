@@ -13,7 +13,7 @@ class ReservationsController < ApplicationController
       flash[:notice] = 'Reservation was made successfully'
       redirect_to controller: :articles, action: :index
     else
-      flash[:create_reservation_alerts] = @reservation.errors.full_messages
+      flash[:errors] = @reservation.errors.full_messages
       render 'new'
     end
   end

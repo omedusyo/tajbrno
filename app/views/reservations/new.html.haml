@@ -8,10 +8,14 @@
     .medium.info.btn
       = link_to 'Show reservations', action: :index
 
+- if flash[:errors].present?
+  .twelve.columns
+    - flash[:errors].each do |error|
+      .danger.alert= error
+
 .twelve.columns
   = form_for @reservation, url: { action: :create, id: @reservation.id } do |f|
     .prepend.field#reservation_date
-      -# %span.adjoined= link_to fa_icon('calendar'), '#'
       .medium.info.btn= link_to fa_icon('calendar'), '#'
       = f.text_field :reservation_date, placeholder: 'Reservation date',
                                         class: 'input'

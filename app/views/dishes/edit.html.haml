@@ -1,7 +1,9 @@
 - @title = 'Edit ' + @dish.name
 
 .twelve.columns
-  %h1 Edit new dish
+  %h1
+    = 'Edit new '
+    = link_to 'dish', action: :index
 
 .twelve.columns
   = form_for @dish, url: { action: :update, id: @dish.id }, html: { multipart: true } do |f|

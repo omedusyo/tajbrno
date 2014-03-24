@@ -6,8 +6,13 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
+
 module Tajbrno
   class Application < Rails::Application
+    # Disabling .field_with_errors
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+      html_tag
+    }
     # config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

@@ -12,19 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require gumby/libs/gumby.js
-//= require gumby/libs/ui/gumby.retina.js
-//= require gumby/libs/ui/gumby.fixed.js
-//= require gumby/libs/ui/gumby.skiplink.js
-//= require gumby/libs/ui/gumby.toggleswitch.js
-//= require gumby/libs/ui/gumby.checkbox.js
-//= require gumby/libs/ui/gumby.radiobtn.js
-//= require gumby/libs/ui/gumby.tabs.js
-//= require gumby/libs/ui/jquery.validation.js
-//= require gumby/libs/gumby.init.js
-//= require gumby/plugins.js
-//= require gumby/main.js
-//= require pretty_uploader.js
-//= require slider.js
-//= require jquery.datetimepicker.js
+//= require gumby/libs/gumby.min.js
+//= require plugins/jquery.prettyuploader.js
+//= require plugins/jquery.slider.js
+//= require plugins/jquery.datetimepicker.js
+//= require plugins/validator.js
 //= require main.js
+//= require controllers/reservations.js
+//= require controllers/users.js
