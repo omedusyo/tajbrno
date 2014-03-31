@@ -1,0 +1,16 @@
+- @title = 'Options'
+
+.twelve.columns
+  %h1 Options
+
+.twelve.columns
+  %h3 Change name
+
+= show_errors
+= show_notice
+.twelve.columns
+  = form_for @user, url: { action: :update } do |f|
+    .field= f.text_field :first_name, placeholder: 'First name', class: 'input'
+    .field= f.text_field :last_name, placeholder: 'Last name', class: 'input'
+
+    .large.info.btn= submit_tag 'Update'
