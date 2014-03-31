@@ -13,4 +13,7 @@ $(document).ready(function () {
   $(datetime_trigger).click(function () {
     $(datetime_input).datetimepicker('show');
   });
+
+  // enable masked input
+  $('#reservation_telephone_number').mask('999-999-999');
 });

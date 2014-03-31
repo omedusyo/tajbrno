@@ -3,5 +3,13 @@ class Dish < ActiveRecord::Base
   belongs_to :images
   belongs_to :user
 
+  auto_strip_attributes :name, :description, :price
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :price, presence: true,
+                    format:   %r{[0-9]+(?:\.[0-9]+)?}
+
+  validates :image, presence: true
+
   mount_uploader :image, DishImageUploader
 end

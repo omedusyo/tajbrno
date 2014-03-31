@@ -32,4 +32,7 @@ class AccessController < ApplicationController
     session[:user_id] = nil
     redirect_to action: :login
   end
+
+  def denied
+  end
 end

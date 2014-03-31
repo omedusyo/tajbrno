@@ -2,13 +2,16 @@ Tajbrno::Application.routes.draw do
   root 'articles#index'
 
   # routes that are concerned with access
-  get  '/login/',  to: 'access#login'
-  post '/login/',  to: 'access#attempt_login'
-  get  '/logout/', to: 'access#logout'
+  get  '/login',  to: 'access#login'
+  post '/login',  to: 'access#attempt_login'
+  get  '/logout', to: 'access#logout'
+  get  '/denied', to: 'access#denied'
 
   # routes that are concerned with users
-  get  '/signup/', to: 'users#signup'
-  post '/signup/', to: 'users#create'
+  get   '/user/signup',  to: 'users#signup'
+  post  '/user/signup',  to: 'users#create'
+  get   '/user/options', to: 'users#options'
+  patch '/user',         to: 'users#update'
 
   # routes that are concerned with articles
   get    '/articles',               to: 'articles#index'
@@ -43,10 +46,12 @@ Tajbrno::Application.routes.draw do
   patch  '/menu/dishes',               to: 'dishes#update'
   delete '/menu/dishes/show/:id',      to: 'dishes#destroy', as: :delete_dish
 
-  # routes that are concerned with
-  get    '/reservations',     to: 'reservations#index'
-  get    '/reservations/new', to: 'reservations#new'
-  post   '/reservations',     to: 'reservations#create'
+  # routes that are concerned with reservations
+  get    '/reservations',           to: 'reservations#index'
+  get    '/reservations/new',       to: 'reservations#new'
+  post   '/reservations',           to: 'reservations#create'
+  post   '/reservations/:id/allow', to: 'reservations#allow'
+  delete '/reservations/:id',       to: 'reservations#destroy', as: :delete_reservation
 
   # routes that are concerned with gallery
   get    '/gallery',               to: 'gallery#index'

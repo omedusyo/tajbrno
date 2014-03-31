@@ -5,6 +5,11 @@
     = 'Create new '
     = link_to 'dish', action: :index
 
+- if flash[:errors].present?
+  .twelve.columns
+    - flash[:errors].each do |error|
+      .danger.alert= error
+
 .twelve.columns
   = form_for @dish, url: { action: :create }, html: { multipart: true } do |f|
     = render partial: 'form', locals: { f: f }

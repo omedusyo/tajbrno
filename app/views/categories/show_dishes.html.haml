@@ -3,27 +3,29 @@
 .twelve.columns
   %h1= @category.name
 
-- if logged_in?
+- if has_access_to? :categories
   .twelve.columns
     .medium.info.btn
       = link_to 'Edit', action: :edit, id: @category.id
     .medium.info.btn
       = link_to 'Add a dish', action: :add_dish, id: @category.id
-    .medium.info.btn
+    .medium.danger.btn
       = link_to 'Delete', delete_category_path(@category.id), method: :delete
+
+= show_notice
 
 .twelve.columns
   %ul.two_up.tiles
     - @category.dishes.each do |dish|
       %li
         %h2
-          - if logged_in?
+          - if has_access_to? :categories
             = link_to dish.name, controller: :dishes, action: :show, id: dish.id
           - else
             = dish.name
         %p= dish.description
         %h3.price= "#{dish.price} $"
-        - if logged_in?
+        - if has_access_to? :categories
           .medium.danger.btn
             = link_to fa_icon('times'), delete_dish_assoc_path(@category.id, dish.id), method: :delete
       %li.image.photo= image_tag dish.image_url(:thumb).to_s

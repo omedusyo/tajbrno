@@ -3,10 +3,12 @@
 .twelve.columns
   %h1 Gallery
 
-- if logged_in?
+- if has_access_to? :gallery
   .twelve.columns
     .medium.info.btn.rounded
       = link_to 'Add new image', action: :new
+
+= show_notice
 
 .twelve.columns
   %ul.two_up.tiles#images

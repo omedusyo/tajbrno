@@ -19,6 +19,7 @@ gem "carrierwave", "~> 0.10.0"
 
 gem 'auto_strip_attributes', '~> 2.0.4'
 gem 'font-awesome-rails', '~> 4.0.3.1'
+gem 'validates_timeliness', '~> 3.0.14'
 
 group :development do
   gem 'mysql2'

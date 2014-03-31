@@ -1,12 +1,12 @@
 - @title = "Editing '#{@article.title}'"
 
 .twelve.columns
-  %h1= raw "Update '#{link_to(@article.title, show_article_url(@article.id))}' article"
+  %h1
+    = 'Update '
+    = link_to(@article.title, show_article_url(@article.id))
+    = ' article'
 
-- if flash[:errors].present?
-  .twelve.columns
-    - flash[:errors].each do |error|
-      .danger.alert= error
+= show_errors
 
 .twelve.columns
   = form_for @article, url: { action: :update, id: @article.id } do |f|

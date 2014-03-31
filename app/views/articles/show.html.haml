@@ -3,12 +3,14 @@
 .twelve.columns
   %h1 Displaying a particular article...
 
-- if logged_in?
+- if has_access_to? :articles
   .twelve.columns
     .medium.info.btn
       = link_to 'Edit', edit_article_path(@article.id)
-    .medium.info.btn
+    .medium.danger.btn
       = link_to 'Delete', delete_article_path(@article.id), method: :delete
+
+= show_notice
 
 .twelve.columns
   .article

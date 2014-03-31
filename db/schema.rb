@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321192755) do
+ActiveRecord::Schema.define(version: 20140328170546) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20140321192755) do
     t.string   "password_digest"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "access_rights"
+    t.string   "access_rights"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

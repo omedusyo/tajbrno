@@ -1,9 +1,8 @@
 class Article < ActiveRecord::Base
   belongs_to :user
 
-  validates :title, presence: true,
-                    length: { minimum: 2 }
-
+  auto_strip_attributes :title, :content
+  validates :title,   presence: true
   validates :content, presence: true
-  # validates :user_id, presence: true
+  validates :user_id, presence: true
 end

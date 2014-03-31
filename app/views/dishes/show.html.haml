@@ -9,7 +9,7 @@
   .twelve.columns
     .medium.info.btn
       = link_to 'Edit', action: :edit, id: @dish.id
-    .medium.info.btn
+    .medium.danger.btn
       = link_to 'Delete', delete_dish_path(@dish.id), method: :delete
 
 .twelve.columns

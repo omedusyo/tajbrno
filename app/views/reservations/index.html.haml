@@ -3,10 +3,18 @@
 .twelve.columns
   %h1 Reservations
 
+= show_notice
+
 %ul.twelve.columns
   - @reservations.each do |reservation|
     %li
       %table
+        %tr(colspan="2")
+          %td
+            = link_to 'Delete', delete_reservation_path(reservation.id), method: :delete, class: :delete_link
+            - if not reservation.allowed
+              = ' : '
+              = link_to 'Allow', { action: :allow, id: reservation.id }, method: :post, class: :confirm_link
         %tr
           %td
             %strong Reservation date:

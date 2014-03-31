@@ -7,6 +7,8 @@
   .twelve.columns
     .danger.alert= flash[:alert]
 
+= show_notice
+
 .twelve.columns.more_height#login
   = form_for @user, url: { action: :attempt_login } do |f|
     .field= f.text_field :username, placeholder: 'Username', class: 'input'

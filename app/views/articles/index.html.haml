@@ -1,14 +1,13 @@
 .twelve.columns
   %h1= 'Displaying all articles...'
 
-- if logged_in?
+- if has_access_to? :articles
   .twelve.columns
     .medium.info.btn.rounded
       = link_to 'Create new article', new_article_url
 
-- if flash[:notice].present?
-  .four.columns
-    .success.label= flash[:notice]
+= show_errors
+= show_notice
 
 %ul.twelve.columns
   - @articles.each do |article|

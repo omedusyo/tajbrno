@@ -15,7 +15,24 @@ protected
     User.find session[:user_id]
   end
 
+  def acknowledge_errors resource
+    flash[:errors] = resource.errors.full_messages
+  end
+
 private
+  def do_authentication
+    confirm_logged_in and confirm_access
+  end
+
+  def confirm_access
+    if current_user.has_access? controller_name.to_sym
+      return true
+    else
+      redirect_to controller: :access, action: :denied
+      return false
+    end
+  end
+
   def confirm_logged_in
     if session[:user_id]
       return true

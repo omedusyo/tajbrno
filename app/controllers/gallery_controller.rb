@@ -1,5 +1,5 @@
 class GalleryController < ApplicationController
-  before_action :confirm_logged_in,
+  before_action :do_authentication,
                 only: USERS_ACTIONS
 
   def index
@@ -20,7 +20,7 @@ class GalleryController < ApplicationController
       flash[:notice] = 'Gallery image added successfully'
       redirect_to action: :index
     else
-      flash[:errors] = @image.errors.full_messages
+      acknowledge_errors @image
       render 'new'
     end
   end
@@ -32,14 +32,17 @@ class GalleryController < ApplicationController
   def update
     @image = GalleryImage.find params[:id]
     if @image.update_attributes gallery_image_params
+      flash[:notice] = 'Gallery image updated successfully'
       redirect_to action: :show, id: @image.id
     else
+      acknowledge_errors @image
       render 'edit'
     end
   end
 
   def destroy
     GalleryImage.find(params[:id]).destroy
+    flash[:notice] = 'Gallery image removed successfully'
     redirect_to action: :index
   end
 

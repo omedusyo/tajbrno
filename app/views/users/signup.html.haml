@@ -3,6 +3,7 @@
 .twelve.columns
   %h1 Sign Up
 
+= show_errors
 .twelve.columns#signup
   = form_for @user, url: { action: :create } do |f|
     .field= f.text_field :username, placeholder: 'Username', class: 'input'

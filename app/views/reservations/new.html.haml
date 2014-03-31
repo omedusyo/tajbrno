@@ -3,9 +3,9 @@
 .twelve.columns
   %h1 Reserve a table
 
-- if logged_in?
+- if has_access_to? :reservations
   .twelve.columns
-    .medium.info.btn
+    .medium.info.btn#show_reservations
       = link_to 'Show reservations', action: :index
 
 - if flash[:errors].present?

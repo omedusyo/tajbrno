@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :confirm_logged_in,
+  before_action :do_authentication,
                 only: USERS_ACTIONS
 
   def index
@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
       flash[:notice] = 'Article created successfully'
       redirect_to action: :index
     else
-      flash[:errors] = @article.errors.full_messages
+      acknowledge_errors @article
       render 'new'
     end
   end
@@ -32,15 +32,17 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find params[:id]
     if @article.update_attributes article_params
+      flash[:notice] = 'Article updated successfully'
       redirect_to action: :show, id: @article.id
     else
-      flash[:errors] = @article.errors.full_messages
+      acknowledge_errors @article
       render 'edit'
     end
   end
 
   def destroy
     Article.find(params[:id]).destroy
+    flash[:notice] = 'Article deleted successfully'
     redirect_to action: :index
   end
 

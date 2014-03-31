@@ -3,7 +3,7 @@
 .twelve.columns
   %h1= 'Menu'
 
-- if logged_in?
+- if has_access_to? :categories
   .twelve.columns
     .medium.info.btn.rounded
       = link_to 'Create new category', action: :new
@@ -11,9 +11,7 @@
     .medium.info.btn.rounded
       = link_to 'Display all dishes', controller: :dishes, action: :index
 
-- if flash[:notice].present?
-  .four.columns
-    .success.label= flash[:notice]
+= show_notice
 
 %ul.twelve.columns
   - @categories.each do |category|

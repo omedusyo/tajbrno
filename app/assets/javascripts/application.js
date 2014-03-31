@@ -14,9 +14,10 @@
 //= require jquery_ujs
 //= require gumby/libs/gumby.min.js
 //= require plugins/jquery.prettyuploader.js
-//= require plugins/jquery.slider.js
 //= require plugins/jquery.datetimepicker.js
+//= require plugins/jquery.maskedinput.js
 //= require plugins/validator.js
+//= require plugins/notifIt.js
 //= require main.js
 //= require controllers/reservations.js
 //= require controllers/users.js

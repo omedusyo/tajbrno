@@ -1,5 +1,5 @@
 class DishesController < ApplicationController
-  before_action :confirm_logged_in,
+  before_action :do_authentication,
                 only: USERS_ACTIONS + [ :index, :show ]
 
   def index
@@ -16,7 +16,7 @@ class DishesController < ApplicationController
       flash[:notice] = 'Dish created successfully'
       redirect_to action: :index
     else
-      flash[:errors] = @dish.errors.full_messages
+      acknowledge_errors @dish
       render 'new'
     end
   end
@@ -34,6 +34,7 @@ class DishesController < ApplicationController
     if @dish.update_attributes dish_params
       redirect_to action: :show, id: @dish.id
     else
+      acknowledge_errors @dish
       render 'edit'
     end
   end
