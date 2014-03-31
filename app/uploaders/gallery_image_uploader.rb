@@ -1,6 +1,9 @@
 # encoding: utf-8
 
 class GalleryImageUploader < CarrierWave::Uploader::Base
+  def cache_dir
+    "#{Rails.root}/tmp/uploads"
+  end
 
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
@@ -47,5 +50,4 @@ class GalleryImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end
