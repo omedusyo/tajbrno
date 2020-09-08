@@ -1,6 +1,6 @@
 == README
 High school final project - basic CRUD web application.
-See https://github.com/omedusyo/tajbrno.git Usually it takes a while to load on the first visit, and Heroku deletes images periodically.
+See https://tajbrno.herokuapp.com/ Usually it takes a while to load on the first visit (Heroku config), and Heroku deletes images periodically.
 Try username: omedusyo, pwd: 123456.
 
 Uses Ruby on Rails/MySQL.
