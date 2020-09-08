@@ -1,28 +1,37 @@
 == README
+High school final project.
+See https://github.com/omedusyo/tajbrno.git Usually it takes a while to load on the first visit, and Heroku deletes images periodically.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Uses Ruby on Rails/MySQL.
 
-Things you may want to cover:
+== Installation Instructions
+Install Ubuntu 12.04 LTS (32 bit)
+Then run these commands:
+  $ sudo apt-get update
+  $ sudo apt-get install curl
+  $ \curl -sSL https://get.rvm.io | bash -s stable
+  $ source ~/.rvm/scripts/rvm
+  $ rvm requirements
+  $ sudo apt-get install nodejs
+  $ rvm install ruby 2.1.0
+  $ rvm use ruby-2.1.0 --default
+  $ rvm rubygems current
+Add 'gem: --no-document' to ~/.gemrc
+  $ sudo apt-get install libmagickwand-dev
+  $ sudo apt-get install mysql-client-5.5 mysql-server-5.5 libmysqlclient-dev
+  $ gem install bundler
+Change directory to the tajbrno folder and run
+  $ bundle install
+In mysql create a database and a user for the project
+  for example:
+    mysql> CREATE DATABASE tajbrno;
+    mysql> CREATE USER 'tajbrno'@'localhost' IDENTIFIED BY '123';
+    mysql> GRANT ALL PRIVILEGES ON tajbrno.* TO 'tajbrno'@'localhost';
+Edit the development section of tajbrno/config/database.yml according to your choice of username and database
+  (rows that require change: database, username, password)
+In tajbrno folder run:
+  $ rake db:migrate
+Then to start the application run (again in tajbrno folder):
+  $ rails s
+Go to http://localhost:3000/
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
